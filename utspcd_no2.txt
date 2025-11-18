@@ -1,0 +1,14 @@
+Analisa Soal No. 2
+1. Perbandingan Visual & Nilai Rata-rata:
+-LPF: Gambar menjadi blur (kabur). Nilai rata-rata piksel biasanya mirip dengan citra asli karena kernelnya merata-ratakan nilai (jumlah elemen kernel = 1).
+
+-HPF: Gambar menjadi hitam pekat, hanya menyisakan garis-garis putih (tepi objek). Nilai rata-rata piksel akan turun drastis (mendekati 0) karena jumlah elemen kernel adalah 0 ($8 + (-8) = 0$), sehingga area yang warnanya rata akan menjadi hitam.
+
+-BPF (Sharpening): Gambar terlihat lebih tajam dan detail tekstur menonjol. Nilai rata-rata piksel biasanya meningkat sedikit atau mirip asli karena pusat kernel bernilai positif besar yang memperkuat piksel tengah dikurangi tetangganya.
+
+2. Hubungan Domain Spasial dan Frekuensi:
+-Low Pass Filter (LPF): Dalam domain frekuensi, ini meloloskan frekuensi rendah (perubahan warna lambat/area rata) dan memblokir frekuensi tinggi (tepi tajam/noise). Efek spasialnya adalah blur.
+
+-High Pass Filter (HPF): Meloloskan frekuensi tinggi (perubahan warna drastis/tepi) dan memblokir frekuensi rendah. Efek spasialnya adalah deteksi tepi.
+
+-Band Pass Filter (BPF/Sharpening): Menggabungkan sifat keduanya untuk menonjolkan fitur tertentu (frekuensi menengah/tinggi) sambil tetap mempertahankan bentuk objek. Efek spasialnya adalah penajaman.
