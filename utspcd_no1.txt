@@ -11,5 +11,5 @@ Kapan transformasi logaritmik lebih bermanfaat dibanding negatif?
 
 Transformasi Logaritmik lebih bermanfaat ketika kita ingin melihat detail pada area gelap (shadows) tanpa menghilangkan detail pada area terang (highlights) secara ekstrem. Ini sangat berguna pada citra yang memiliki dynamic range tinggi (misalnya foto rontgen atau spektrum Fourier) di mana nilai piksel dominan rendah (gelap).
 
-
 Transformasi Negatif lebih bermanfaat untuk membalikkan informasi, misalnya membaca klise film atau melihat detail putih di latar belakang hitam yang mungkin lebih mudah dilihat oleh mata manusia jika dibalik.
+
