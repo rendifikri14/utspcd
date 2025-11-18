@@ -1,59 +1,3 @@
-Tentu, mari kita bedah ketiga soal tersebut secara terperinci. Ini adalah tugas pengolahan citra digital (Computer Vision) yang mencakup transformasi intensitas, pemfilteran (konvolusi) menggunakan Python, dan perhitungan manual.
-
-Berikut adalah penyelesaian langkah demi langkah untuk Soal No. 1, Soal No. 2, dan Soal No. 3.
-
-Soal No. 1: Transformasi Citra (Negatif & Logaritmik)
-Tujuan: Memahami cara memanipulasi nilai piksel secara matematis untuk mengubah tampilan citra.
-
-1. Kode Python (Google Colab)
-Gunakan kode berikut untuk memproses gambar, membuat histogram, dan menampilkannya.
-
-Python
-
-import cv2
-import numpy as np
-import matplotlib.pyplot as plt
-
-# 1. Baca citra grayscale
-# Ganti 'gambar_anda.jpg' dengan nama file gambar yang diupload ke Colab
-img = cv2.imread('gambar_anda.jpg', 0) 
-
-# 2. Terapkan Rumus
-
-# a. Citra Negatif
-# Rumus: G = 255 - F
-img_negative = 255 - img
-
-# b. Citra Logaritmik
-# Rumus: G = c * log(1 + F)
-# c = 255 / log(1 + max_pixel_value)
-c = 255 / np.log(1 + np.max(img))
-img_log = c * (np.log(1 + img))
-img_log = np.array(img_log, dtype=np.uint8) # Konversi kembali ke integer
-
-# 3. Tampilkan Gambar dan Histogram
-fig, ax = plt.subplots(3, 2, figsize=(12, 12))
-
-# Citra Asli
-ax[0, 0].imshow(img, cmap='gray')
-ax[0, 0].set_title('Citra Asli')
-ax[0, 1].hist(img.ravel(), 256, [0, 256])
-ax[0, 1].set_title('Histogram Asli')
-
-# Citra Negatif
-ax[1, 0].imshow(img_negative, cmap='gray')
-ax[1, 0].set_title('Citra Negatif')
-ax[1, 1].hist(img_negative.ravel(), 256, [0, 256])
-ax[1, 1].set_title('Histogram Negatif')
-
-# Citra Logaritmik
-ax[2, 0].imshow(img_log, cmap='gray')
-ax[2, 0].set_title('Citra Logaritmik')
-ax[2, 1].hist(img_log.ravel(), 256, [0, 256])
-ax[2, 1].set_title('Histogram Logaritmik')
-
-plt.tight_layout()
-plt.show()
 Analisa Soal No. 1
 Perbedaan persebaran nilai keabuan (Histogram):
 
@@ -66,5 +10,6 @@ Citra Logaritmik: Histogram akan cenderung menyebar ke arah nilai yang lebih tin
 Kapan transformasi logaritmik lebih bermanfaat dibanding negatif?
 
 Transformasi Logaritmik lebih bermanfaat ketika kita ingin melihat detail pada area gelap (shadows) tanpa menghilangkan detail pada area terang (highlights) secara ekstrem. Ini sangat berguna pada citra yang memiliki dynamic range tinggi (misalnya foto rontgen atau spektrum Fourier) di mana nilai piksel dominan rendah (gelap).
+
 
 Transformasi Negatif lebih bermanfaat untuk membalikkan informasi, misalnya membaca klise film atau melihat detail putih di latar belakang hitam yang mungkin lebih mudah dilihat oleh mata manusia jika dibalik.
